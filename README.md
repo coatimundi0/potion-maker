@@ -5,13 +5,13 @@ i'm a dm for a dnd campaign (realistically, it's homebrewed pathfinder). my play
 ***
 
 ## Short Term Plans
-[] remove unnecessary comments and file inclusions.
-[] add items to lists in: Colors, Containers, Effect, HasChunks, Senses, Textures
+- [] remove unnecessary comments and file inclusions.
+- [] add items to lists in: Colors, Containers, Effect, HasChunks, Senses, Textures
 
 ## Long Term Plans
-[] create UI for Web Application.
-[] use Android Studio to make an Android phone application.
-[] allow user to determine the highest number of dice rolls.
+- [] create UI for Web Application.
+- [] use Android Studio to make an Android phone application.
+- [] allow user to determine the highest number of dice rolls.
 
 ***
 
