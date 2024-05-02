@@ -15,7 +15,7 @@ colors = [clear, "pink", "hot pink", "red", "blood red", "orange", "metallic bro
 def determineColors(form):
     ### PICK MAIN COLOR
     color1 = colors[randrange(0, len(colors)-1)] 
-    secondary_color = randint(0, 100)
+    secondary_color = randint(0, 99)
     color2 = colors[randrange(1, len(colors)-1)]
 
     if color1 == color2:
@@ -65,7 +65,7 @@ def liquidColor(final):
     elif (90 <= secondary_color <= 94) and (num_colors == 2):
         #print("DIFFERENT")
         phrase = "The liquid inside the container is " + color1 + " with additional swirls of " + color2 + ". The movement is a little mesmerizing."
-    elif (95 <= secondary_color <= 100) and (num_colors == 2):
+    elif (95 <= secondary_color <= 99) and (num_colors == 2):
         #print("DIFFERENT")
         phrase = "The liquid inside the container is " + color1 + " and " + color2 + ". The two colors are clearly separated and do not mix, even if you shake it."
     else:
@@ -75,8 +75,6 @@ def liquidColor(final):
     return phrase
 
 def powderColor(final):
-    #print(final)
-
     color1 = final[0]
     color2 = final[1]
     secondary_color = final[2]
@@ -89,7 +87,7 @@ def powderColor(final):
         return phrase
     
         # TWO COLORS
-    elif (76 <= secondary_color <= 100) and (num_colors == 2):
+    elif (76 <= secondary_color <= 99) and (num_colors == 2):
         #print("DIFFERENT")
         phrase = "Opening the container, you find that the powder inside is " + color1 + ". There are a few " + color2 + " bits in there, too."
     else:
@@ -117,7 +115,7 @@ def pasteColor(final):
     elif (50 <= secondary_color <= 74) and (num_colors == 2):
         #print("DIFFERENT")
         phrase = "The paste inside the container is " + color1 + " with a thin layer of a " + color2 + " top coating."
-    elif (75 <= secondary_color <= 100) and (num_colors == 2):
+    elif (75 <= secondary_color <= 99) and (num_colors == 2):
         #print("DIFFERENT")
         phrase = "The top half of the paste is " + color1 + " and the bottom half is " + color2 + ". Sucks that the colors will mix when you start using it."
     else:
@@ -142,7 +140,7 @@ def gelColor(final):
     elif (40 <= secondary_color <= 59) and (num_colors == 2):
         #print("DIFFERENT")
         phrase = "The gel inside the container is " + color1 + " with a thin " + color2 + " top coat."
-    elif (60 <= secondary_color <= 100) and (num_colors == 2):
+    elif (60 <= secondary_color <= 99) and (num_colors == 2):
         #print("DIFFERENT")
         phrase = "The gel is half " + color1 + " and half " + color2 + "."
     else:

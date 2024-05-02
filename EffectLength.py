@@ -18,14 +18,14 @@ def makeTimePeriod():
 
     if 0 <= all_day <= 5:
         phrase = "The effect of the item lasts for 24-hours."
-    elif 6 <= all_day <= 8:
+    elif 6 <= all_day <= 7:
         num_rolls = randrange(1, 5)
         dice_rolled = dice[randrange(0, len(dice)-1)]
         period = time_period[randrange(0, len(time_period)-1)]
 
         phrase = "The effect of the item lasts " + f"{num_rolls}" + dice_rolled + " " + period  + "."
-    elif 9 <= all_day <= 10:
-        time = randrange(0, 10)
+    elif 8 <= all_day <= 9:
+        time = randrange(1, 10)
         period = time_period[randrange(0, len(time_period)-1)]
 
         phrase = "The effect of the item lasts " + f"{time}" + " " + period  + "."

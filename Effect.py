@@ -39,7 +39,7 @@ permanent = np.array([
 
 def determineLength():
     # length ::  INSTANT (0-29); TIMES (30-89); PERMANENT (90-100)
-    length = randint(0, 100)
+    length = randint(0, 99)
 
     if 0 <= length <= 29:
         #effect = makeEffect(accuracy, instant)
@@ -49,7 +49,7 @@ def determineLength():
         #effect = makeEffect(accuracy, timed)
         effect_number = randrange(1, len(timed)-1)
         effect = timed[effect_number]
-    elif 90 <= length <= 100:
+    elif 90 <= length <= 99:
         #effect = makeEffect(accuracy, permanent)
         effect_number = randrange(1, len(permanent)-1)
         effect = permanent[effect_number]

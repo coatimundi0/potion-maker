@@ -23,7 +23,7 @@ def makeFullTitle(title, effect):
     elif verbiage == 1: 
         phrase = says + effect[0] + " " + title + "."
     else: 
-        print("There has been an error.")
+        print("makeFullTitle ERROR")
         return -1
     
     return phrase

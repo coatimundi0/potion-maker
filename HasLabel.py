@@ -33,11 +33,11 @@ def makeLabel(container):
 
     elif (cont == 0) or (cont == 1) or (cont == 3) or (cont == 4):
         # legible :: YES (0-74); NO (75-100)
-        legible = randint(0,100)
+        legible = randint(0,99)
 
         if 0 <= legible <= 74:
             phrase = "Looks like there's a label on it..."
-        elif 75 <= legible <= 100:
+        elif 75 <= legible <= 99:
             illegible = no_title[randrange(0, len(no_title)-1)]
             phrase = illegible
             label = bool(False)

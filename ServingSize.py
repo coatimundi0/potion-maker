@@ -9,13 +9,13 @@ SERVING SIZE
 ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
 
 def makeServings():
-    servings = randint(0, 100)
+    servings = randint(0, 99)
 
     if 0 <= servings <= 69:
         size = "one time"
     elif 70 <= servings <= 89:
         size = "two times"
-    elif 90 <= servings <= 100:
+    elif 90 <= servings <= 99:
         size = "three times"
     else: 
         print("makeServings ERROR")
