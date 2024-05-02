@@ -2,10 +2,13 @@
 
 i'm a dm for a dnd campaign (realistically, it's homebrewed pathfinder). my players are deeply obsessed with looting fallen enemies, chests, and drawers. it gets kinda lame if they only find the same 50 preset potions, so i've decided to make a randomizer. the generic description is that the players can find potions, powders, pastes and gels with special effects.
 
+this is **HEAVILY inspired** by [this post on reddit](https://reddit.com/r/DnDBehindTheScreen/comments/4btnkc/random_potions_table/). i really loved the concept of this post, but i hated the idea of having to slow down our already *really* long sessions by rolling a bunch of dice over and over again for all four of my players. because it's inspired by another person's post and because i love the idea of collaborative efforts, this code is totally public and free to use, even when i end up making this into an app. it's more of a passion project than anything.
+just be cool about it!
+
 ***
 
 ## Short Term Plans
-- [ ] remove unnecessary comments and file inclusions.
+- [ ] remove unnecessary comments/files/functions/etc.
 - [ ] add items to lists in: Colors, Containers, Effect, HasChunks, Senses, Textures
 
 ## Long Term Plans
