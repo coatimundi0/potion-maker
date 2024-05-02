@@ -9,7 +9,8 @@ just be cool about it!
 
 ## Short Term Plans
 - [ ] remove unnecessary comments/files/functions/etc.
-- [ ] add items to lists in: Colors, Containers, Effect, HasChunks, Senses, Textures
+- [ ] add items to lists in: Colors, Containers, HasChunks, Senses, Textures
+- [ ] Effect file overhaul
 - [ ] make a file for preset potions and include that possibility in XTESTING
 
 ## Long Term Plans
