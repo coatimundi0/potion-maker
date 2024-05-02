@@ -5,27 +5,27 @@ i'm a dm for a dnd campaign (realistically, it's homebrewed pathfinder). my play
 ***
 
 ## Short Term Plans
-- [] remove unnecessary comments and file inclusions.
-- [] add items to lists in: Colors, Containers, Effect, HasChunks, Senses, Textures
+- [ ] remove unnecessary comments and file inclusions.
+- [ ] add items to lists in: Colors, Containers, Effect, HasChunks, Senses, Textures
 
 ## Long Term Plans
-- [] create UI for Web Application.
-- [] use Android Studio to make an Android phone application.
-- [] allow user to determine the highest number of dice rolls.
+- [ ] create UI for Web Application.
+- [ ] use Android Studio to make an Android phone application.
+- [ ] allow user to determine the highest number of dice rolls.
 
 ***
 
 ## File List (Alphabetical Order)
 ### Accuracy.py
 > randomly decides if the item's given name and effect is accurate.
-> there is a 10% chance that the user has to roll 1d100 and beat a random DC.
+> there's a 10% chance that the user has to roll 1d100 and beat a random DC.
 
 ### Colors.py
 > randomly decides the main color of the item. The item has a chance of having two colors.
 > dependent on [Form.py](###Form.py)
 
 ### Containers.py
-> the item you find can be an ingestible potion, a splash potion, a liquid in a droplet, a powder, or a paste/gel.
+> the item can be an ingestible potion, a splash potion, a small liquid, a powder, or a paste/gel.
 > dependent on [Form.py](###Form.py)
 
 ### Description.py
@@ -33,7 +33,7 @@ i'm a dm for a dnd campaign (realistically, it's homebrewed pathfinder). my play
 
 ### DiceRoll.py
 > randomly decides the dice roll for bonus/penalty. maximum number of rolls is the player level.
-> i currently have it set between 1 and 5 rolls because my players are at level 5.
+> currently have it set between 1 and 5 rolls because my players are at level 5.
 
 ### Effect.py
 > randomly decides the effect that the item has.
