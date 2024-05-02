@@ -10,6 +10,7 @@ just be cool about it!
 ## Short Term Plans
 - [ ] remove unnecessary comments/files/functions/etc.
 - [ ] add items to lists in: Colors, Containers, Effect, HasChunks, Senses, Textures
+- [ ] make a file for preset potions and include that possibility in XTESTING
 
 ## Long Term Plans
 - [ ] create UI for Web Application.
