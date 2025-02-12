@@ -1,35 +1,60 @@
-from random import randrange 
+from random import randrange
 from random import randint
-from Form import makeForm
+import pandas as pd
+import os
 
 '''
 TITLE
     The label reads [TITLE] of [EFFECT].
     The label reads [EFFECT] [TITLE].
+
+    0        |   1        |   2       |   3
+    LIQUID   |   POWDER   |   PASTE   |   GEL
 '''
-liquid_title = ["Potion", "Elixir", "Draught", "Vial", "Philter", "Tonic", "Brew", "Ichor", "Juice", "Concoction"]
-powder_title = ["Powder", "Particles", "Grains", "Talc", "Sprinkles", "Scatter", "Strew", "Dust", "Dredge", "Grind", "Crumble"]
-paste_title = ["Paste", "Gum", "Glue", "Cement", "Pate", "Puree", "Spread"]
-gel_title = ["Amalgam", "Gel", "Compound", "Mix", "Synthesis", "Bond", "Gum", "Goo"]
 
 ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
 
-def makeTitle(form):
-    # form :: LIQUID (0); POWDER (1); PASTE (2); GEL (3)
-    title_form = form[0]
+basePath = os.path.dirname(os.path.realpath(__file__))
+fileName = "AllTitles.csv"
+fullPath = os.path.join(basePath, fileName)
+df = pd.read_csv(fullPath, sep=';')
 
-    if title_form == 0:
-        title = liquid_title
-    elif title_form == 1:
-        title = powder_title
-    elif title_form == 2: 
-        title = paste_title
-    elif title_form == 3:
-        title = gel_title        
-    else: 
-        print("makeTitle ERROR")
-        return -1
-    
-    title = title[randrange(0, len(title)-1)]
-    return title 
+def make_title(form):
+        # determine the form of the item 
+    titleForm = form[0]
+        # determine row length
+    rowLen = df[df.columns[titleForm]].count()
+        # determine the random point
+    rowNum = randrange(0, (rowLen-1))
+        # determine title
+    title = df.iloc[rowNum, titleForm]
+
+
+        # PHRASING
+    phrase = ["Effect ", " of Effect"]
+    detPhrase = randint(0, 1)
+    phrasing = ""
+
+    match detPhrase:
+            # Effect [Title] (0) :::
+        case 0:
+            phrasing = phrase[detPhrase] + title
+
+            # [Title] of Effect (1) :::
+        case 1:
+            phrasing = title + phrase[detPhrase]
+
+            # ERROR :::
+        case _:
+                print("make_title ERROR")
+                return -1
+
+    return phrasing 
+
 ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
+
+    # DELETE LATER: for testing purposes
+from Form import make_form
+form = make_form()
+test = make_title(form)
+#print(test)
