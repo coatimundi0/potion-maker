@@ -1,3 +1,7 @@
+'''
+THIS PAGE IS BEING REWORKED! disregard :)
+'''
+
 from random import randrange 
 from random import randint
 
