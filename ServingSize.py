@@ -1,25 +1,4 @@
-from random import randint
-
 '''
-SERVING SIZE
-    It seems like this can be used [SERVINGS].
+GITHUB ISNT LETTING ME DELETE!!!
+    this has been merged into the Others.py file :)
 '''
-# servings :: ONCE (0-69); TWICE (70-89); THRICE (90-99)
-
-##### ##### ##### ##### ##### ##### ##### ##### ##### #####
-
-def makeServings():
-    servings = randint(0, 99)
-
-    if 0 <= servings <= 69:
-        size = "one time"
-    elif 70 <= servings <= 89:
-        size = "two times"
-    elif 90 <= servings <= 99:
-        size = "three times"
-    else: 
-        print("makeServings ERROR")
-        return -1
-    
-    phrase = "It seems like this can be used " + size + "."
-    return phrase
