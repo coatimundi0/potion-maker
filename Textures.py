@@ -1,57 +1,201 @@
-from random import randrange 
+from random import randrange
+from random import randint
+from random import choice
+import pandas as pd
+import os
 
 '''
 PRIMARY TEXTURE (POTION)
     It looks [TEXTURE].
+
+    0           |   1             |   2           |   3            |   4            |
+    LIQUID      |   POWDER        |   PASTE       |   GEL          |                |
+    POTIONTEX   |   POTIONTASTE   |   POWDERTEX   |   POWDERSWAL   |   PASTESGELS   |
+    LOOKING     |   TOUCH         |   INGESTLIQ   |   INGESTPOW    |
+    CHUNKY      |   PIECES        |
 '''
-
-potion_texture = [ "thick and sludgy... yuck!", "thin and watery.", "airy and bubbly.", "bubbly... like soda...", "thick and slimey! It hurts going down!", "sooo viscous!", "sickly and oily. 10/10 wouldn't recommend.", "nice and milky.", "so light that it's almost gaseous. It feels like you didn't drink anything!", "silky smooth and easy to swallow.", "watery."]
-
-powder_texture = ["a thin, fine powder, but not horrible.", "flaky and hard to swallow...", "like a bunch of little crystals. You try to chew and it doesn't really work. You have to swallow it whole.", "a bunch of fine crystals that instantly melt in your mouth.", "a fine powder. It melts when it touches the saliva in your mouth.", "crunchy! Kinda like chicken when it's fried... well, the skin, at least."]
-
-other_texture = ["really sticky.", "runny and gross.", "snotty... ewww.", "acceptably sticky", "tacky and weird... you don't like it.", "gooey and doesn't really hold its shape.", "weirdly chalky, like it has a translucent powder on it!", "firm. The shape only dips where you touch it.", "jello-like and jiggly. When you move, it moves, too."]
 
 ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
 
-def makeTexture(form):
-    # form :: LIQUID (0); POWDER (1); PASTE (2); GEL (3)
-    if form == 0:
-        phrase = potionTexture()
-    elif form == 1:
-        phrase = powderTexture()
-    elif (form == 2) or (form == 3):
-        phrase = otherTexture()
+def choose_action(form): 
+        # read file
+    basePath = os.path.dirname(os.path.realpath(__file__))
+    fileName = "AllActions.csv"
+    fullPath = os.path.join(basePath, fileName)
+    df = pd.read_csv(fullPath, sep=';')
+        # determine what kind of item it is (liquid, powder, paste/gel)
+    itemForm = form[0]
+        # determine which action you take (look OR ingest/touch)
+    action = randint(0, 1)
+
+        # LIQUID (0) :::
+    if itemForm == 0:
+        match action:
+                # LOOKING (0) :::
+            case 0:
+                column = 0
+                # INGESTLIQ (2) :::
+            case 1:
+                column = 2
+                # ERROR :::
+            case _:
+                print("choose_action ERROR1")
+                return -1
+
+        # POWDER (1) :::
+    elif itemForm == 1:
+        match action:
+                # LOOKING (0) :::
+            case 0:
+                column = 0
+                # INGESTPOW (3) :::
+            case 1:
+                column = 3
+                # ERROR :::
+            case _:
+                print("choose_action ERROR2")
+                return -1
+
+        # PASTE (2) // GEL (3) :::
+    elif (itemForm == 2) or (itemForm == 3):
+        match action:
+                # LOOKING (0) :::
+            case 0:
+                column = 0
+                # TOUCH (1) :::
+            case 1:
+                column = 1
+                # ERROR :::
+            case _:
+                print("choose_action ERROR3")
+                return -1
+
+        # ERROR :::
     else:
-        print("makeTexture ERROR ")
+        print("choose_action ERROR4")
+        return -1
+    
+
+        # determine row length
+    rowLen = df[df.columns[column]].count()
+        # determine the random point
+    rowNum = randrange(0, (rowLen-1))
+        # determine title
+    phrase = df.iloc[rowNum, column]
+    
+    final = [phrase, action]
+    return final
+
+def pick_texture(form):
+        # determine the form of the item 
+    itemType = form[0]
+        # read file
+    basePath = os.path.dirname(os.path.realpath(__file__))
+    fileName = "AllTextures.csv"
+    fullPath = os.path.join(basePath, fileName)
+    df = pd.read_csv(fullPath, sep=';')
+        # determine which action you take (look OR ingest/touch)
+    check = choose_action(form)
+    action = check[1]
+    phrase = ""
+
+        # LIQUID (0) :::
+    if itemType == 0:
+        match action:
+                # POTIONTEX (0) :::
+            case 0:
+                column = 0
+                # POTIONTASTE (1) :::
+            case 1:
+                column = 1
+                # ERROR :::
+            case _:
+                print("pick_texture ERROR1")
+                return -1
+
+        # POWDER (1) :::
+    elif itemType == 1:
+        match action:
+                # POWDERTEX (2) :::
+            case 0:
+                column = 2
+                # POWDERSWAL (3) :::
+            case 1:
+                column = 3
+                # ERROR :::
+            case _:
+                print("pick_texture ERROR2")
+                return -1
+
+        # PASTE (2) // GEL (3) :::
+    elif (itemType == 2) or (itemType == 3):
+            # POWDERSWAL (4) :::
+        column = 4
+
+        # ERROR :::
+    else:
+        print("pick_texture ERROR3")
+        return -1
+
+
+        # determine row length
+    rowLen = df[df.columns[column]].count()
+        # determine the random point
+    rowNum = randrange(0, (rowLen-1))
+        # determine texture
+    texture = df.iloc[rowNum, column] 
+        # check chunkiness
+    chunks = is_chunky()
+        # full phrasing
+    phrase = check[0] + " " + texture + " " + chunks
+
+    return phrase
+
+def is_chunky():
+        # read file
+    basePath = os.path.dirname(os.path.realpath(__file__))
+    fileName = "AllChunks.csv"
+    fullPath = os.path.join(basePath, fileName)
+    df = pd.read_csv(fullPath, sep=';')
+        # determine if it's chunky
+    chunks = choice([True, False])
+    phrase = ""
+
+        # CHUNKS :::
+    if chunks == bool(True):
+        # SENTENCE START :::
+            # determine row length
+        rowLen = df[df.columns[0]].count()
+            # determine the random point
+        rowNum = randrange(0, (rowLen-1))
+            # determine start
+        start = df.iloc[rowNum, 0] 
+
+        # CHUNKY PARTS :::
+            # determine row length
+        rowLen = df[df.columns[1]].count()
+            # determine the random point
+        rowNum = randrange(0, (rowLen-1))
+            # determine chunky bits
+        bits = df.iloc[rowNum, 1] 
+
+        phrase = start + " " + bits
+
+        # NOT CHUNKY :::
+    elif chunks == bool(False):
+        pass
+
+        # ERROR :::
+    else:
+        print("is_chunky ERROR")
         return -1
     
     return phrase
 
-def potionTexture():
-    ingesting = ["You swallow the liquid. It's ", "You bite the bullet and chug a serving. It's ", "When swallowed, the liquid is ", "It's "]
-
-    verbiage = ingesting[randrange(0, len(ingesting)-1)]
-    texture = potion_texture[randrange(0, len(potion_texture)-1)]
-    phrase = verbiage + texture
-
-    return phrase
-
-def powderTexture(): 
-    ingesting = ["You put the powder in your mouth. It's ", "You go ahead and munch on a serving. It's kind of ", "When swallowed, the powder is ", "The powder is "]
-
-    verbiage = ingesting[randrange(0, len(ingesting)-1)]
-    texture = powder_texture[randrange(0, len(powder_texture)-1)]
-    phrase = verbiage + texture
-
-    return phrase
-
-def otherTexture():
-    touching = ["You dip your fingers in. It feels ", "You go ahead and touch it. It's kind of ", "Against your fingers, it feels ", "It looks exactly like how it feels, and it feels ", "It's a little "]
-
-    verbiage = touching[randrange(0, len(touching)-1)]
-    texture = other_texture[randrange(0, len(other_texture)-1)]
-    phrase = verbiage + texture
-
-    return phrase
-
 ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
+
+    # DELETE LATER: for testing purposes
+from Form import make_form
+form = make_form()
+test = pick_texture(form)
+#print(test)
