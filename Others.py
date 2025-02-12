@@ -1,6 +1,8 @@
 from random import randrange
 from random import randint
 
+        # contains: serving_size, dice_rolls, pick_accuracy
+
 '''
 SERVING SIZE
     Looks like there's [SIZE] in here.
