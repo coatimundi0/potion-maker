@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 '''
-Colors
+COLORS
     The mixture inside the container is [COLORSHIFT/RAINBOW/CLEAR/COLOR].
     The item inside the container is [COLOR1] with little flecks of [COLOR2]
 
